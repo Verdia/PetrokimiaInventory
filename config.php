@@ -65,12 +65,22 @@ if (isset($_POST['login_user'])) {
         $query = "SELECT * FROM registration WHERE username = '$username' AND password = '$password'";
         $results = mysqli_query($database, $query);
         if (mysqli_num_rows($results) == 1) {
+            $data = mysqli_fetch_assoc($results);
+            $_SESSION['username'] = $data;
+            $passwords = $data['password'];
+            $levels = $data['level'];
+            if ($levels == "Admin") {
             $_SESSION['username'] = $username;
-            $_SESSION['success'] = "You are now logged in";
-            header('location: index.php');
-        } else {
+            $_SESSION['admin'] = $levels;
+            header("location: index.php");
+            } else {
+            $_SESSION['username'] = $username;
+            $_SESSION['user'] = $levels;
+            header("location: index_user.php");
+            }
+            } else {
             array_push($error, "Wrong username or password");
-        }
+            }
     }
 }
 

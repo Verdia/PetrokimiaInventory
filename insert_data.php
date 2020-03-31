@@ -46,7 +46,7 @@ include('config.php')
           </ul>
         </div>
       </nav>
-  </header>
+    </header>
         
     <div style="display: grid;">  
       <h2 class="ed_h2Tambah">Tambah Barang</h2>

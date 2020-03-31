@@ -7,7 +7,7 @@ include('config.php')
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login</title>
+  <title>Register to Inventory System PT.PETROKIMIA GRESIK</title>
   
   <link rel="stylesheet" href="assets/flat-icon/flaticon.css">
   <link rel="stylesheet" href="temp/css/styles.css">
@@ -28,31 +28,57 @@ include('config.php')
 	<link rel="stylesheet" type="text/css" href="temp/css/main.css">
 <!--===============================================================================================-->
 </head>
+
 <body>
   <div class="main-wrapper">
-    <header class="bgHeader2">
+    <header class="bgHeader">
       <nav class="barNavigation d-flex flex-row bd-highlight mb-3">
         <div class="headerPetro">
           <a href="http://localhost/InventorySystem/index.php">PT. PETROKIMIA INDUSTRI</a>
         </div>
+        <div class="barCollapse">
+          <ul class="barDashboard d-flex flex-row bd-highlight mb-3">
+            <li><a class="dashboard" href="http://localhost/InventorySystem/index.php">DASHBOARD</a></li>
+            <li><a class="addBarang" href="http://localhost/InventorySystem/tabel_user.php">PINJAMAN BARANG</a></li>
+            <li><a class="addBarang" href="http://localhost/InventorySystem/tabel_transaksi.php">KEMBALIAN BARANG</a></li>
+            <li><a class="logout" href="index.php?logout='1'">LOGOUT</a></li>  
+          </ul>
+        </div>
       </nav>
-      <div class="loginPage">
-          <h2 class="loginHeader">LOGIN</h2>
-          <form method="POST" id="formInsert" action="login.php">
-            <?php include('error.php') ?>
-            <div class="form-login">
-              <label>Username:</label>
-              <input type="text" name="username" class="form-username-control">
-              <label>Password:</label>
-              <input type="password" name="password" class="form-password-control">
-              <span class="createAccount_txt"><a href="http://localhost/InventorySystem/register.php">Don't have account? Register here</a></span><br>
-              <button class="loginSubmit" name="login_user" type="submit">LOGIN</button><br>
-            </div>
-            </form>
+    </header>
+        
+    <div style="display: grid;">  
+      <h2 class="ed_h2Tambah">Peminjaman Barang</h2>
+      <?php
+        include('error.php');
+        $id = $_GET['id'];
+        $query = "SELECT * FROM insertdata WHERE id='$id'";
+        $querys = mysqli_query($database, $query);
+        $nomor = 1;
+        while ($data = mysqli_fetch_array($querys)) {
+        ?>
+        <form method="POST" action="update_pinjam.php" id="formInsert">
+        <?php include('error.php'); ?>  
+        <div class="form-group">
+            <label class="usr">Nama Peminjam:</label>
+            <input type="hidden" name="id" value="<?php echo $data['id'] ?>">
+            <input type="text" class="form-code-control" name="nama_peminjam" value="<?php echo $_SESSION['username'] ?>">
+            <label class="usr">Code:</label>
+            <input type="text" class="form-name-control" name="code_unique" value="<?php echo $data['code_unique'] ?>">
+            <label class="usr">Nama Barang:</label>
+            <input type="text" class="form-location-control" name="nama_barang" value="<?php echo $data['nama_barang'] ?>">
+            <label class="usr">Tanggal Pinjam:</label>
+            <input type="date" class="form-date-control" name="tanggal_pinjam" value="<?php echo date('Y-m-d') ?>">
+            <input type="hidden" name="status" value="Dipinjam">
+            <button class="addItem" type="submit" name="pinjam">Save</button>
       </div>
-  </header>
+        </form>
+        <?php
+          }
+        ?>
+      </div>
     
-  <footer class="footer footer--bg">
+      <footer class="footer footer--bg">
         <div class="container">
           <div class="page-section">
             <div class="row gutters-100">
@@ -127,9 +153,5 @@ include('config.php')
     });
   </script>
 </body>
+
 </html>
-
-
-
-
-

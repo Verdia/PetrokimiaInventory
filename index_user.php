@@ -1,5 +1,16 @@
 <?php
-include('config.php')
+include('config.php');
+
+if (!isset($_SESSION['username'])) {
+    $_SESSION['msg'] = "You must login first";
+    header('location: login.php');
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: login.php");
+}
 ?>
 
 <!doctype html>
@@ -7,7 +18,7 @@ include('config.php')
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login</title>
+  <title>Welcome to front page of Inventory System PT.PETROKIMIA GRESIK</title>
   
   <link rel="stylesheet" href="assets/flat-icon/flaticon.css">
   <link rel="stylesheet" href="temp/css/styles.css">
@@ -28,31 +39,48 @@ include('config.php')
 	<link rel="stylesheet" type="text/css" href="temp/css/main.css">
 <!--===============================================================================================-->
 </head>
+
 <body>
-  <div class="main-wrapper">
-    <header class="bgHeader2">
-      <nav class="barNavigation d-flex flex-row bd-highlight mb-3">
-        <div class="headerPetro">
-          <a href="http://localhost/InventorySystem/index.php">PT. PETROKIMIA INDUSTRI</a>
+<header class="bgHeader2">
+<nav class="barNavigation d-flex flex-row bd-highlight mb-3">
+        <div>
+          <a href="http://localhost/InventorySystem/index_user.php"  class="headerPetro">PT. PETROKIMIA INDUSTRI</a>
+        </div>
+        <div class="barCollapse">
+          <ul class="barDashboard d-flex flex-row bd-highlight mb-3">
+            <li><a class="dashboard" href="http://localhost/InventorySystem/index_user.php">DASHBOARD</a></li>
+            <li><a class="addBarang" href="http://localhost/InventorySystem/tabel_user.php">PINJAMAN BARANG</a></li>
+            <li><a class="addBarang" href="http://localhost/InventorySystem/tabel_transaksi.php">KEMBALIAN BARANG</a></li>
+            <li><a class="logout" href="index_user.php?logout='1'">LOGOUT</a></li>  
+          </ul>
         </div>
       </nav>
-      <div class="loginPage">
-          <h2 class="loginHeader">LOGIN</h2>
-          <form method="POST" id="formInsert" action="login.php">
-            <?php include('error.php') ?>
-            <div class="form-login">
-              <label>Username:</label>
-              <input type="text" name="username" class="form-username-control">
-              <label>Password:</label>
-              <input type="password" name="password" class="form-password-control">
-              <span class="createAccount_txt"><a href="http://localhost/InventorySystem/register.php">Don't have account? Register here</a></span><br>
-              <button class="loginSubmit" name="login_user" type="submit">LOGIN</button><br>
-            </div>
-            </form>
+      <div class="content_txt">
+          <h1 class="headContent_txt">SISTEM INVENTARIS BARANG</h1>
+            <?php if (isset($_SESSION['success'], $_SESSION['level'])) : ?>
+                <div class="error success">
+                    <h3>
+                        <?php
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                        ?>
+                    </h3>
+                </div>
+            <?php endif ?>
+            <?php if (isset($_SESSION['username'])) : ?>
+                <p class="fillContent_txt">
+                Selamat datang 
+                <strong>
+                    <?php
+                    echo $_SESSION['username'];
+                    ?>
+                </strong>, Selamat datang di website sistem inventaris barang, website berikut berfungsi sebagai memasukkan data barang serta kondisi dari barang.
+            </p>
+            <?php endif ?>
       </div>
-  </header>
-    
-  <footer class="footer footer--bg">
+</header>
+
+<footer class="footer footer--bg">
         <div class="container">
           <div class="page-section">
             <div class="row gutters-100">
@@ -105,15 +133,12 @@ include('config.php')
           </div>
         </div>
         </footer>
-  </div>
-    
-    
-  
+    </div>
 
-  <script src="assets/jquery/jquery-3.2.1.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/jquery/jquery-3.2.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
-  <script>
+    <script>
     $(document).ready(function() {
 
       var $videoSrc = $("#video").attr("src");
@@ -128,8 +153,3 @@ include('config.php')
   </script>
 </body>
 </html>
-
-
-
-
-

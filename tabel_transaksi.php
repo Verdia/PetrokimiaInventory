@@ -1,10 +1,11 @@
 <?php
 include 'config.php';
-$result = mysqli_query($database, "SELECT * FROM insertdata");
+$result = mysqli_query($database, "SELECT * FROM transaksi");
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,40 +30,46 @@ $result = mysqli_query($database, "SELECT * FROM insertdata");
 	<link rel="stylesheet" type="text/css" href="temp/vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="temp/css/util.css">
-	<link rel="stylesheet" type="text/css" href="temp/css/main.css">
+    <link rel="stylesheet" type="text/css" href="temp/css/main.css">
 <!--===============================================================================================-->
 </head>
+
 <body>
-  <div class="main-wrapper">
+<div class="main-wrapper">
     <header class="bgHeader">
-      <nav class="barNavigation d-flex flex-row bd-highlight mb-3">
-        <div class="headerPetro">
-          <a href="#">PT. PETROKIMIA INDUSTRI</a>
+    <nav class="barNavigation d-flex flex-row bd-highlight mb-3">
+        <div>
+          <a href="http://localhost/InventorySystem/index_user.php"  class="headerPetro">PT. PETROKIMIA INDUSTRI</a>
         </div>
         <div class="barCollapse">
           <ul class="barDashboard d-flex flex-row bd-highlight mb-3">
-            <li><a class="logout2" href="#">LOGOUT</a></li>  
+            <li><a class="dashboard" href="http://localhost/InventorySystem/index_user.php">DASHBOARD</a></li>
+            <li><a class="addBarang" href="http://localhost/InventorySystem/tabel_user.php">PINJAMAN BARANG</a></li>
+            <li><a class="addBarang" href="http://localhost/InventorySystem/tabel_transaksi.php">KEMBALIAN BARANG</a></li>
+            <li><a class="logout" href="index_user.php?logout='1'">LOGOUT</a></li>  
           </ul>
         </div>
       </nav>
   </header>
 
         <div class="table100 ver1 m-b-110">
-					<div class="table100-head">
-						<table>
-							<thead>
-								<tr class="row100 head">
-									<th class="cell100 column11">Code</th>
-									<th class="cell100 column21">Name Item</th>
-									<th class="cell100 column31">Location</th>
-									<th class="cell100 column41">Date</th>
-									<th class="cell100 column51">ID PIC</th>
-									<th class="cell100 column61">Name PIC</th>
-                  <th class="cell100 column71">Status</th>
-                  <th class="cell100 column81">Pinjam</th>                  
-								</tr>
-							</thead>
-						</table>
+				<div class="table100-head">
+                <?php
+                    if (mysqli_num_rows($result) > 0) {
+                ?>
+					<table>
+						<thead>
+						    <tr class="row100 head">
+							<th class="cell100 columnheadBack1">Code</th>
+							<th class="cell100 columnheadBack2">Name Item</th>
+							<th class="cell100 columnheadBack3">Nama Peminjam</th>
+							<th class="cell100 columnheadBack4">Tanggal Pinjam</th>
+							<th class="cell100 columnheadBack5">Tanggal Kembali</th>
+              <th class="cell100 columnheadBack6">Status</th>
+              <th class="cell100 columnheadBack7">Kembali</th>                  
+						</tr>
+					</thead>
+				</table>
           </div>
           
           <?php
@@ -74,22 +81,21 @@ $result = mysqli_query($database, "SELECT * FROM insertdata");
 						<table>
 							<tbody>
 								<tr class="row100 body">
-									<td class="cell100 column1"><?php echo $row["code_unique"]; ?></td>
-									<td class="cell100 column2"><?php echo $row["nama_barang"]; ?></td>
-									<td class="cell100 column3"><?php echo $row["location"]; ?></td>
-									<td class="cell100 column4"><?php echo $row["date"]; ?></td>
-									<td class="cell100 column5"><?php echo $row["id_pic"]; ?></td>
-									<td class="cell100 column6"><?php echo $row["nama_pic"]; ?></td>
-									<td class="cell100 column7"><?php echo $row["status"]; ?></td>
+									<td class="cell100 columnbodyBack1"><?php echo $row["code_unique"]; ?></td>
+									<td class="cell100 columnbodyBack2"><?php echo $row["nama_barang"]; ?></td>
+									<td class="cell100 columnbodyBack3"><?php echo $row["nama_peminjam"]; ?></td>
+									<td class="cell100 columnbodyBack4"><?php echo $row["tanggal_pinjam"]; ?></td>
+									<td class="cell100 columnbodyBack5"><?php echo $row["tanggal_kembali"]; ?></td>
+									<td class="cell100 columnbodyBack6"><?php echo $row["status"]; ?></td>
 									<td>
-                    <a class="transaksi_pinjam" href="transaksi_pinjam.php?id=<?php echo $row['id'] ?>">Pinjam</a>
+                    <a class="columnbodyBack7" href="transaksi_kembali.php?id=<?php echo $row['id'] ?>">Kembali</a>
                   </td>
                 </tr>
               <?php
-              $i++;
-            }
-            ?>
-							</tbody>
+                $i++;
+                }
+              ?>
+				</tbody>
             </table>
             <?php
           } else {
@@ -174,9 +180,5 @@ $result = mysqli_query($database, "SELECT * FROM insertdata");
     });
   </script>
 </body>
+
 </html>
-
-
-
-
-
