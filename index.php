@@ -48,7 +48,7 @@ if (isset($_GET['logout'])) {
         </div>
         <div class="barCollapse">
           <ul class="barDashboard d-flex flex-row bd-highlight mb-3">
-            <li><a class="dashboard" href="http://localhost/InventorySystem/index.php">DASHBOARD</a></li>
+            <li><a class="dashboardI" href="http://localhost/InventorySystem/index.php">DASHBOARD</a></li>
             <li><a class="addBarang" href="http://localhost/InventorySystem/save_data.php">DAFTAR BARANG</a></li>
             <li><a class="logout" href="index.php?logout='1'">LOGOUT</a></li>  
           </ul>
