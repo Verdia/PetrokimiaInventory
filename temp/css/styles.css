@@ -1080,8 +1080,7 @@ button:focus{
 
 .footer__third .glyphicon-envelope, .footer__third .glyphicon-earphone{
       color: #fff;
-      padding-right: 80px;
-      width: 100px;
+      width: 100%;
     }
 
 .footer__third .form-control{

@@ -182,7 +182,7 @@ body, html {
   font-size: 25px;
   color: #fff;
   position: relative;
-  margin-left: 430px;
+  margin-left: 120px;
 }
 
 .forgotAccount_txt{
@@ -531,51 +531,6 @@ th, td {
   padding-right: 10px;
 }
 
-.column1 {
-  width: 5%;
-  padding-left: 40px;
-}
-
-.column2 {
-  width: 13%;
-  padding-left: 20px;
-}
-
-.column3 {
-  width: 10%;
-  padding-left: 8px;
-}
-
-.column4 {
-  width: 10%;
-  padding-left: 20px;
-}
-
-.column5 {
-  width: 15%;
-  padding-left: 35px;
-}
-
-.column6 {
-  width: 15%;
-  padding-left: 40px;
-}
-
-.column7 {
-  width: 15%;
-  padding-left: 40px;
-}
-
-.column8 {
-  width: 20%;
-}
-
-.column9 {
-  width: 10%;
-  padding-right: 20px;
-}
-
-
 .column11 {
   width: 9%;
   padding-left: 40px;
@@ -672,6 +627,155 @@ th, td {
   padding-left: 70px;
 }
 
+.columnheadBack1 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadBack2 {
+  width: 10%;
+  padding-left: 20px;
+}
+
+.columnheadBack3 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadBack4 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadBack5 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadBack6 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadBack7 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyBack1 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyBack2 {
+  width: 10%;
+  padding-left: 20px;
+}
+
+.columnbodyBack3 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyBack4 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyBack5 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyBack6 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyBack7 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadPinjam1 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadPinjam2 {
+  width: 10%;
+  padding-left: 20px;
+}
+
+.columnheadPinjam3 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadPinjam4 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadPinjam5 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadPinjam6 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadPinjam7 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnheadPinjam8 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyPinjam1 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyPinjam2 {
+  width: 10%;
+  padding-left: 20px;
+}
+
+.columnbodyPinjam3 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyPinjam4 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyPinjam5 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyPinjam6 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyPinjam7 {
+  width: 15%;
+  padding-left: 20px;
+}
+
+.columnbodyPinjam8 {
+  width: 15%;
+  padding-left: 20px;
+}
 
 .table100-head th {
   padding-top: 18px;
